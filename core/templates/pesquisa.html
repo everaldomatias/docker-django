@@ -9,7 +9,7 @@
     <form action="/pesquisa/" method="post">
         {% csrf_token %}
         <label for="pesquisar">Your name: </label>
-        <input id="pesquisar" type="text" name="current_string" value="{{ cnpj }}">
+        <input id="pesquisar" type="text" name="cnpj" value="{{ cnpj }}">
         <input type="submit" value="Pesquisar">
     </form>
     <span>{{ resgate }}</span>
