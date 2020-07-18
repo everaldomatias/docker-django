@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Pesquisar</title>
+</head>
+<body>
+    <h1>Pesquisar</h1>
+    <form action="/pesquisa/" method="post">
+        {% csrf_token %}
+        <label for="pesquisar">Your name: </label>
+        <input id="pesquisar" type="text" name="current_string" value="{{ current_string }}">
+        <input type="submit" value="Pesquisar">
+    </form>
+    <span>{{ current_string }}</span>
+</body>
+</html>
