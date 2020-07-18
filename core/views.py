@@ -9,7 +9,7 @@ def index(request):
     }
     return render(request, 'index.html', context)
 
-# def contato(request):
-#    return render(request, 'contato.html')
+def contato(request):
+   return render(request, 'contato.html')
 
 
