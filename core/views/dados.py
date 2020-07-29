@@ -20,3 +20,4 @@ def dados(request):
     }
 
     return render(request, 'dados.html', context)
+
