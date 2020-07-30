@@ -7,3 +7,4 @@ class DadosModelForm(forms.ModelForm):
         model = Dados
         fields = ['cnpj', 'data', 'vltotal', 'vlquota',
                   'vlpatrimliq', 'captcdia', 'resgdia', 'nrcotst']
+
