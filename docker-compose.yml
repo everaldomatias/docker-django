@@ -1,18 +1,36 @@
-version: '3'
-    
+version: '3.5'
+
 services:
-  db:
-    image: postgres
-    environment:
-      - POSTGRES_DB=postgres
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=postgres
   web:
-    build: .
+    build:
+      context: .
+      dockerfile: ./compose/local/Dockerfile
     command: python manage.py runserver 0.0.0.0:8000
+    environment:
+      - DB_HOST=mariadb
+      - DB_USERNAME=django
+      - DB_PASSWORD=django
+      - DB_NAME=django
     volumes:
       - .:/code
     ports:
       - "8000:8000"
     depends_on:
-      - db
+      - mariadb
+  mariadb:
+    image: mariadb:10.4
+    environment:
+      - MYSQL_ROOT_PASSWORD=django
+      - MYSQL_USER=django
+      - MYSQL_DATABASE=django
+      - MYSQL_PASSWORD=django
+      - TERM=xterm
+    volumes:
+      - ./compose/local/mariadb-data:/docker-entrypoint-initdb.d
+      - ./mariadb_data:/var/lib/mysql
+
+    ports:
+      - "3306:3306"
+
+volumes:
+  mariadb_data:
