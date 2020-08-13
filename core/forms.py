@@ -5,7 +5,7 @@ from .models import Dados, Index
 class IndexModelForm(forms.ModelForm):
     class Meta:
         model = Index
-        fields = ['cnpj', 'data']
+        fields = ['cnpj']
 
 
 class DadosModelForm(forms.ModelForm):

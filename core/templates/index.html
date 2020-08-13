@@ -25,7 +25,6 @@
                     <th scope="col">Cnpj</th>
                     <th scope="col">Data</th>
                     <th scope="col">Vl Total</th>
-                    <th scope="col">Vl Quota</th>
                     <th scope="col">Vl Patrim Liq</th>
                     <th scope="col">Vl Captc Dia</th>
                     <th scope="col">Resg Dia</th>
@@ -39,13 +38,54 @@
                         <td scope="row">{{ item.cnpj }}</td>
                         <td scope="row">{{ item.data }}</td>
                         <td scope="row">{{ item.vltotal }}</td>
-                        <td scope="row">{{ item.vlquota }}</td>
                         <td scope="row">{{ item.vlpatrimliq }}</td>
                         <td scope="row">{{ item.captcdia }}</td>
                         <td scope="row">{{ item.resgdia }}</td>
                         <td scope="row">{{ item.nrcotst }}</td>
                     </tr>
                 {% endfor %}
+            </tbody>
+        </table>
+        <table class="table">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Ano</th>
+                    <th scope="col">Cnpj</th>
+                    <th scope="col">Jan</th>
+                    <th scope="col">Fev</th>
+                    <th scope="col">Mar</th>
+                    <th scope="col">Abr</th>
+                    <th scope="col">Mai</th>
+                    <th scope="col">Jun</th>
+                    <th scope="col">Jul</th>
+                    <th scope="col">Ago</th>
+                    <th scope="col">Set</th>
+                    <th scope="col">Out</th>
+                    <th scope="col">Nov</th>
+                    <th scope="col">Dez</th>
+                    <th scope="col">Ret Ano</th>
+                    <th scope="col">Acum</th>
+                    <th scope="col">Ret 6m</th>
+                    <th scope="col">Ret 12m</th>
+                    <th scope="col">Ret 24m</th>
+                </tr>
+            </thead>
+            <tbody>
+            <!--
+                {% for item in itens %}
+                    <tr>
+                        <td scope="row">{{ item.id }}</td>
+                        <td scope="row">{{ item.cnpj }}</td>
+                        <td scope="row">{{ item.data }}</td>
+                        <td scope="row">{{ item.vltotal }}</td>
+                        <td scope="row">{{ item.vlpatrimliq }}</td>
+                        <td scope="row">{{ item.captcdia }}</td>
+                        <td scope="row">{{ item.resgdia }}</td>
+                        <td scope="row">{{ item.nrcotst }}</td>
+                    </tr>
+                {% endfor %}
+                -->
             </tbody>
         </table>
     </div>

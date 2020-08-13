@@ -3,7 +3,7 @@ from django.db import models
 
 class Index(models.Model):
     cnpj = models.CharField('CNPJ', max_length=100)
-    data = models.DateField('Data')
+    # data = models.DateField('Data')
 
     def __str__(self):
         return self.cnpj
