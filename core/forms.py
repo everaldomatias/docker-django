@@ -3,9 +3,11 @@ from .models import Dados, Index
 
 
 class IndexModelForm(forms.ModelForm):
+    data = forms.DateField(input_formats=['%YYYY/%mm/%dd'])
+
     class Meta:
         model = Index
-        fields = ['cnpj']
+        fields = ['cnpj', 'data']
 
 
 class DadosModelForm(forms.ModelForm):

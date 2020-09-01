@@ -4,15 +4,22 @@ from core.models import Dados
 
 
 def index(request):
-    cnpj = request.POST.get('cnpj') if request.POST.get('cnpj') else ''
+    cnpj = request.POST.get('cnpj') #if request.POST.get('cnpj') else ''
+    data = request.POST.get('data') #if request.POST.get('data') else ''
     form = IndexModelForm(request.POST)
+
     if form.is_valid():
         form = IndexModelForm()
 
+    itens = Dados.objects.filter(cnpj=cnpj, data=data)
+    for i in itens:
+        i.soma = i.vltotal + i.vlpatrimliq
+        form = IndexModelForm()
     context = {
-        'itens': Dados.objects.filter(cnpj=cnpj),
+        'itens': itens,
         'cnpj': cnpj,
         'form': form,
+        'data': data,
     }
 
     return render(request, 'index.html', context)
