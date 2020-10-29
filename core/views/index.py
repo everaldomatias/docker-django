@@ -13,7 +13,8 @@ def index(request):
 
     itens = Dados.objects.filter(cnpj=cnpj, data=data)
     for i in itens:
-        i.soma = i.vltotal + i.vlpatrimliq
+        i.jan = i.vltotal + i.vlpatrimliq
+        i.ano = data[:4]
         form = IndexModelForm()
     context = {
         'itens': itens,

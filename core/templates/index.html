@@ -1,4 +1,7 @@
+
+{% load static %}
 {% load bootstrap4 %}
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -8,7 +11,7 @@
 </head>
 <body>
     <div class="container">
-        <h1>Pesquisa</h1>
+        <h1>Consulta</h1>
 
         <form action="{% url 'index' %}" method="post">
             {% csrf_token %}
@@ -18,11 +21,27 @@
                 <button type="submit" class="btn btn-primary">Pesquisar</button>
             {% endbuttons %}
         </form>
+        <h2>Informações do Fundo</h2>
         <table class="table">
             <thead class="thead-dark">
                 <tr>
-                    <th scope="col">#</th>
                     <th scope="col">Cnpj</th>
+                    <th scope="col">Denominação Social</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in itens %}
+                    <tr>
+                        <td scope="row">{{ item.cnpj }}</td>
+                        <td scope="row">{{ item.denom_social }}</td>
+                   </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <h2>Dados diários</h2>
+        <table class="table">
+            <thead class="thead-dark">
+                <tr>
                     <th scope="col">Data</th>
                     <th scope="col">Vl Total</th>
                     <th scope="col">Vl Quota</th>
@@ -35,8 +54,6 @@
             <tbody>
                 {% for item in itens %}
                     <tr>
-                        <td scope="row">{{ item.id }}</td>
-                        <td scope="row">{{ item.cnpj }}</td>
                         <td scope="row">{{ item.data }}</td>
                         <td scope="row">{{ item.vltotal }}</td>
                         <td scope="row">{{ item.vlquota }}</td>
@@ -48,12 +65,11 @@
                 {% endfor %}
             </tbody>
         </table>
+        <h2>Retornos mensais</h2>
         <table class="table">
             <thead class="thead-dark">
                 <tr>
-                    <th scope="col">#</th>
                     <th scope="col">Ano</th>
-                    <th scope="col">Cnpj</th>
                     <th scope="col">Jan</th>
                     <th scope="col">Fev</th>
                     <th scope="col">Mar</th>
@@ -74,20 +90,19 @@
                 </tr>
             </thead>
             <tbody>
-            <!--
+
                 {% for item in itens %}
                     <tr>
-                        <td scope="row">{{ item.id }}</td>
-                        <td scope="row">{{ item.cnpj }}</td>
-                        <td scope="row">{{ item.data }}</td>
-                        <td scope="row">{{ item.vltotal }}</td>
+                        <td scope="row">{{ item.ano }}</td>
+                        <td scope="row">{{ item.jan}}</td>
+                        <!--<td scope="row">{{ item.vltotal }}</td>
                         <td scope="row">{{ item.vlpatrimliq }}</td>
                         <td scope="row">{{ item.captcdia }}</td>
                         <td scope="row">{{ item.resgdia }}</td>
-                        <td scope="row">{{ item.nrcotst }}</td>
+                        <td scope="row">{{ item.nrcotst }}</td>-->
                     </tr>
                 {% endfor %}
-                -->
+
             </tbody>
         </table>
     </div>
