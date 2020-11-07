@@ -1,23 +1,21 @@
-from django.shortcuts import render
+from django.views.generic import CreateView
 from django.contrib import messages
 from core.forms import DadosModelForm
+from core.models import Dados
+from django.urls import reverse_lazy
 
 
-def dados(request):
-    if str(request.method) == 'POST':
-        form = DadosModelForm(request.POST, request.FILES)
-        if form.is_valid():
-            form.save()
+class DadosView(CreateView):
+    template_name = 'dados.html'
+    model = Dados
+    form_class = DadosModelForm
+    success_url = reverse_lazy('dados')
 
-            messages.success(request, 'Dados cadastrados com sucesso')
-            form = DadosModelForm()
-        else:
-            messages.error(request, 'Erro ao cadastrar os dados.')
-    else:
-        form = DadosModelForm()
-    context = {
-        'form': form
-    }
+    def form_valid(self, form, *args, **kwargs):
+        messages.success(self.request, 'Dados cadastrados com sucesso')
+        return super(DadosView, self).form_valid(form, *args, **kwargs)
 
-    return render(request, 'dados.html', context)
+    def form_invalid(self, form, *args, **kwargs):
+        messages.error(self.request, 'Erro ao cadastrar os dados')
+        return super(DadosView, self).form_invalid(form, *args, **kwargs)
 
